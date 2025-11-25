@@ -1,8 +1,10 @@
 import "../styles/ContactCard.css";
+const defaultAvatar = "https://www.gravatar.com/avatar/?d=mp";
 
 const ContactCard = ({ contact, onEdit, onDelete }) => (
   <div className="contact-card">
-    <img src={contact.photoUrl} alt={contact.name} className="contact-photo" />
+    <img 
+    src={contact.photoUrl || defaultAvatar} alt={contact.name} className="contact-photo" />
     <div className="contact-info">
       <h2>{contact.name}</h2>
       <div>
