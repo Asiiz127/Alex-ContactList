@@ -1,28 +1,34 @@
 import React, {useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { StoreContext } from "../hooks/ReduceComponent";
+import { Outlet } from "react-router-dom";
 
-export const ContactList = () => {
-    const {store, dispatch} = useContext(Context);
+const ContactList = () => {
+    const {store, dispatch} = useContext(StoreContext);
     const navigate = useNavigate();
 
-    const removeContact = (position) => {
-        dispatch({ type: 'REMOVE_CONTACT', position });
+    const editContact = (id) => {
+        navigate(`/editContact/${id}`);
     }
-
-    const editContact = (position) => {
-        navigate(`/EditContact/${position}`);
+    const removeContact = (id) => {
+        dispatch({ type: 'REMOVE_CONTACT', id });
     }
-
-    return (<>
+    return (
+        <>
             <h1>Contact List</h1>
-            <Link to="/CreateContact">
+            <Link to="/createContact">
             <button>Create New Contact</button>
             </Link>
             <ul>
-                {store.contactList.map((contact, index) => <li>{contact.email}
-                    <button onClick={() => editContact(index)}>✏️</button>
-                    <button onClick={() => removeContact(index)}>X</button>
-                </li>)}
+            {store.ContactList.map(contact => (
+                <li key={contact.id}>
+                {contact.email}
+                <button onClick={() => editContact(contact.id)}>✏️</button>
+                <button onClick={() => removeContact(contact.id)}>X</button>
+                </li>
+            ))}
             </ul>
+            <Outlet />
         </>)
 }
+export default ContactList;

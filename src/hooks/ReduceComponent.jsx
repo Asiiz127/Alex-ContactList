@@ -2,7 +2,7 @@ import React from "react";
 import { useReducer, useContext, createContext } from "react";
 import { storeReducer, initialStore } from "../store";
 
-const StoreContext = createContext();
+export const StoreContext = createContext();
 
 export function ReduceComponent({ children }) {
   const [store, dispatch] = useReducer(storeReducer, initialStore());
@@ -11,8 +11,8 @@ export function ReduceComponent({ children }) {
       {children}
     </StoreContext.Provider>
   );
-};
+}
 
-export default function useReduceContext() {
-  return useContext(Context);
+export function useReduceContext() {
+  return useContext(StoreContext);
 }

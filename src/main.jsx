@@ -2,14 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from "react-router-dom";  // Import RouterProvider to use the router
 import { router } from "./routes";  // Import the router configuration
-import ReduceComponent from './hooks/ReduceComponent';  // Import the ReduceComponent for local state management
+import { ReduceComponent } from './hooks/ReduceComponent';  // Import the ReduceComponent for local state management
 
-const Main = () => {
+function Main () {
     return (
         <React.StrictMode> 
             <ReduceComponent>
-                <RouterProvider router={router}>
-                </RouterProvider>
+                <RouterProvider router={router} />
             </ReduceComponent>
         </React.StrictMode>
     );

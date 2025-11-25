@@ -1,18 +1,20 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { StoreContext } from "../hooks/ReduceComponent";
 
-export const CreateContact = () => {
+const CreateContact = () => {
     const [email, setEmail] = useState("");
-    const { store, dispatch } = useContext(Context);
+    const { store, dispatch } = useContext(StoreContext);
     const navigate = useNavigate();
 
     const saveContact = () => {
         const newContact = { email };
-        dispatch({ type: 'CREATE_CONTACT', value: { newContact } });
+        dispatch({ type: 'CREATE_CONTACT', value: newContact });
         navigate("/");
     }
 
     return  (<>
+        <div>Total contacts: {store.ContactList.length}</div>
         <h1>Create Contact</h1>
         <Link to="/">
         <button>Back to Home</button>
@@ -21,3 +23,4 @@ export const CreateContact = () => {
         <button onClick={saveContact}>Save Contact</button>
     </>)
 }
+export default CreateContact;
