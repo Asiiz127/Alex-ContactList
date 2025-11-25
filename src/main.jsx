@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider } from "react-router-dom";  // Import RouterProvider to use the router
-import { router } from "./routes";  // Import the router configuration
-import { ReduceComponent } from './hooks/ReduceComponent';  // Import the ReduceComponent for local state management
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
+import { ReduceComponent } from './hooks/ReduceComponent';
+import './styles/main.css';
+
 
 function Main () {
     return (
@@ -14,5 +16,4 @@ function Main () {
     );
 }
 
-// Render the Main component into the root DOM element.
 ReactDOM.createRoot(document.getElementById('root')).render(<Main />)
