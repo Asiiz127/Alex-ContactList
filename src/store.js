@@ -1,5 +1,12 @@
 export const initialStore = () => ({
-  ContactList: [{ id:'1', email: "alex@gmail.com" }],
+  ContactList: [{
+      id: '1',
+      photoUrl: 'ruta/a/foto.jpg',
+      name: 'Mike Anamendolla',
+      address: '5842 Hillcrest Rd',
+      phone: '(870) 288-4149',
+      email: 'mike.ana@example.com'
+    }],
 });
 
 export const storeReducer = (store, action) => {

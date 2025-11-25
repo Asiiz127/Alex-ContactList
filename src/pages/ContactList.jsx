@@ -2,6 +2,8 @@ import React, {useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../hooks/ReduceComponent";
 import { Outlet } from "react-router-dom";
+import ContactCard from "../components/ContactCard";
+import "../styles/ContactForm.css";
 
 const ContactList = () => {
     const {store, dispatch} = useContext(StoreContext);
@@ -15,20 +17,23 @@ const ContactList = () => {
     }
     return (
         <>
+            <div className="main-container">
             <h1>Contact List</h1>
             <Link to="/createContact">
-            <button>Create New Contact</button>
+            <button className="add-contact-btn">Add new contact</button>
             </Link>
-            <ul>
-            {store.ContactList.map(contact => (
-                <li key={contact.id}>
-                {contact.email}
-                <button onClick={() => editContact(contact.id)}>✏️</button>
-                <button onClick={() => removeContact(contact.id)}>X</button>
-                </li>
-            ))}
+            <ul className="contact-list">
+                {store.ContactList.map(contact => (
+                    <ContactCard
+                    key={contact.id}
+                    contact={contact}
+                    onEdit={() => editContact(contact.id)}
+                    onDelete={() => removeContact(contact.id)}
+                    />
+                ))}
             </ul>
             <Outlet />
-        </>)
-}
+            </div>
+            </>);
+};
 export default ContactList;
