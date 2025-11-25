@@ -7,6 +7,7 @@ const EditContact = () => {
     const { id } = useParams();
     const { store, dispatch } = useContext(StoreContext);
     const navigate = useNavigate();
+    const defaultAvatar = "https://www.gravatar.com/avatar/?d=mp";
 
     const [form, setForm] = useState({
         name: "",
@@ -60,7 +61,7 @@ const EditContact = () => {
             <h1>Edit Contact</h1>
             <form onSubmit={e => { e.preventDefault(); editContact(); }}>
             <div className="contact-form-group">
-                {photoPreview && (<img src={photoPreview} alt="Preview" style={{ width: 100, borderRadius: "50%", marginBottom: 10 }}/>)}
+                {photoPreview && (<img src={photoPreview|| defaultAvatar} alt="Preview" style={{ width: 100, borderRadius: "50%", marginBottom: 10 }}/>)}
                 <div className="contact-form-group">
                 <input
                 type="text"

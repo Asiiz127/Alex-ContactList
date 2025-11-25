@@ -1,7 +1,7 @@
 export const initialStore = () => ({
   ContactList: [{
       id: '1',
-      photoUrl: 'ruta/a/foto.jpg',
+      photoUrl: './src/img/photo.jpg',
       name: 'Mike Anamendolla',
       address: '5842 Hillcrest Rd',
       phone: '(870) 288-4149',

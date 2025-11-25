@@ -14,6 +14,7 @@ const CreateContact = () => {
   const [photoPreview, setPhotoPreview] = useState("");
   const { store, dispatch } = useContext(StoreContext);
   const navigate = useNavigate();
+  const defaultAvatar = "https://www.gravatar.com/avatar/?d=mp";
 
   const handleChange = (e) => {
     setForm({
@@ -44,7 +45,7 @@ const CreateContact = () => {
       <h1>Create Contact</h1>
       <form onSubmit={e => { e.preventDefault(); saveContact(); }}>
         <div className="contact-form-group">
-        {photoPreview && (<img src={photoPreview} alt="Preview" style={{ width: 100, borderRadius: "50%", marginBottom: 10 }}/>)}
+        {photoPreview && (<img src={photoPreview|| defaultAvatar} alt="Preview" style={{ width: 100, borderRadius: "50%", marginBottom: 10 }}/>)}
         <input
           type="text"
           name="name"
